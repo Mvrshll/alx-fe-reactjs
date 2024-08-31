@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import RegistrationForm from './components/RegistrationForm'
 // or import RegistrationForm from './components/formikForm'
+import FormikForm from './components/formikForm'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,6 +23,10 @@ function App() {
       <div>
         <h1>User Registration</h1>
         <RegistrationForm />
+      </div>
+      <div>
+        <h1>User Registration with Formik</h1>
+        <FormikForm />
       </div>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
