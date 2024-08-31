@@ -29,7 +29,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/profile/*" element={<ProtectedRoute element={<Profile />} isAuthenticated={isAuthenticated} />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/post/:postId" element={<BlogPost />} />
+          <Route path="/blod/:id" element={<BlogPost />} /> {/* Dynamic route for blog posts */}
         </Routes>
       </Router>
       <div className="card">
