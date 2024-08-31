@@ -8,6 +8,7 @@ import Profile from './components/Profile'
 import NotFound from './NotFound'
 import BlogPost from './components/BlogPost'
 import ProtectedRoute from './components/ProtectedRoute'
+import { AuthProvider } from './components/AuthContext'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,6 +25,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <AuthProvider>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -32,6 +34,7 @@ function App() {
           <Route path="/blog/:id" element={<BlogPost />} /> {/* Dynamic route for blog posts */}
         </Routes>
       </Router>
+      </AuthProvider>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
