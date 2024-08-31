@@ -3,12 +3,13 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './Home'
+import Home from './components/Home'
 import Profile from './components/Profile'
 import NotFound from './NotFound'
 import BlogPost from './components/BlogPost'
 import ProtectedRoute from './components/ProtectedRoute'
-import { AuthProvider } from './components/AuthContext'
+import { AuthProvider } from './AuthContext'
+
 
 function App() {
   const [count, setCount] = useState(0)
