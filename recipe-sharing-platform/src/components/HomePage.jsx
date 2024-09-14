@@ -1,4 +1,6 @@
+// src/components/HomePage.jsx
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import recipesData from '../data.json'; // Adjust the path if necessary
 
 const HomePage = () => {
@@ -19,11 +21,16 @@ const HomePage = () => {
             <div className="p-4">
               <h2 className="text-xl font-semibold">{recipe.title}</h2>
               <p className="text-gray-600">{recipe.summary}</p>
-              <a href={`/recipes/${recipe.id}`} className="text-blue-500 hover:underline mt-2 inline-block">View Recipe</a>
+              <Link to={`/recipe/${recipe.id}`} className="text-blue-500 hover:underline mt-2 inline-block">
+                View Recipe
+              </Link>
             </div>
           </div>
         ))}
       </div>
+      <Link to="/new-recipe" className="text-blue-500 hover:underline mt-4 block text-center">
+        Add a New Recipe
+      </Link>
     </div>
   );
 };
