@@ -1,25 +1,23 @@
-// src/components/HomePage.jsx
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
-import recipesData from '../data.json'; // Adjust the path if necessary
+import { Link } from 'react-router-dom';
+import recipesData from '../data.json';
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    // Simulate fetching data
     setRecipes(recipesData);
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold text-center mb-8">Recipe Sharing Platform</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="container mx-auto p-6">
+      <h1 className="text-4xl font-bold text-center mb-8 text-blue-600">Recipe Sharing Platform</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {recipes.map(recipe => (
-          <div key={recipe.id} className="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105">
-            <img src={recipe.image} alt={recipe.title} className="w-full h-48 object-cover" />
+          <div key={recipe.id} className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl">
+            <img src={recipe.image} alt={recipe.title} className="w-full h-48 object-cover transition-transform duration-300 transform hover:scale-110" />
             <div className="p-4">
-              <h2 className="text-xl font-semibold">{recipe.title}</h2>
+              <h2 className="text-xl font-semibold text-gray-800">{recipe.title}</h2>
               <p className="text-gray-600">{recipe.summary}</p>
               <Link to={`/recipe/${recipe.id}`} className="text-blue-500 hover:underline mt-2 inline-block">
                 View Recipe
