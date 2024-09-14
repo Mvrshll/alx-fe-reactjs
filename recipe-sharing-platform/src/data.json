@@ -3,12 +3,48 @@
       "id": 1,
       "title": "Spaghetti Carbonara",
       "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-      "image": "https://via.placeholder.com/150"
+      "image": "https://via.placeholder.com/150",
+      "ingredients": [
+        "400g spaghetti",
+        "150g pancetta or guanciale",
+        "100g pecorino cheese, grated",
+        "3 large eggs",
+        "Freshly cracked black pepper",
+        "Salt"
+      ],
+      "instructions": [
+        "Cook the spaghetti in a large pot of salted boiling water until al dente.",
+        "Meanwhile, heat a pan over medium heat and add the pancetta, cooking until crispy.",
+        "In a bowl, whisk together the eggs, pecorino cheese, and a generous amount of black pepper.",
+        "Once the pasta is cooked, reserve some pasta water, then drain the spaghetti.",
+        "Add the hot pasta to the pan with the pancetta, remove from heat, and quickly mix in the egg mixture, adding reserved pasta water as needed to create a creamy sauce.",
+        "Serve immediately, topped with extra cheese and black pepper."
+      ]
     },
     {
       "id": 2,
       "title": "Chicken Tikka Masala",
-      "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-      "image": "https://via.placeholder.com/150"
+      "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
+      "image": "https://via.placeholder.com/150",
+      "ingredients": [
+        "500g chicken breast, cubed",
+        "200g yogurt",
+        "2 tbsp tikka masala paste",
+        "1 onion, chopped",
+        "2 garlic cloves, minced",
+        "1 inch ginger, grated",
+        "400g canned tomatoes",
+        "200ml coconut milk",
+        "Fresh coriander, for garnish",
+        "Salt and pepper to taste"
+      ],
+      "instructions": [
+        "Marinate the chicken in yogurt and tikka masala paste for at least 1 hour.",
+        "Heat oil in a pan and sauté onions until golden brown. Add garlic and ginger, cooking until fragrant.",
+        "Add the marinated chicken and cook until browned.",
+        "Stir in canned tomatoes and coconut milk, then simmer for 20 minutes.",
+        "Season with salt and pepper. Garnish with fresh coriander before serving.",
+        "Serve with rice or naan."
+      ]
     }
   ]
