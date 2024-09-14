@@ -3,14 +3,14 @@ import { useState } from 'react';
 const AddRecipeForm = () => {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
-  const [instructions, setInstructions] = useState('');
+  const [steps, setSteps] = useState(''); // Updated to use "steps"
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Simple validation
-    if (!title || !ingredients || !instructions) {
+    if (!title || !ingredients || !steps) { // Changed "instructions" to "steps"
       setError('All fields are required.');
       return;
     }
@@ -22,12 +22,12 @@ const AddRecipeForm = () => {
     }
 
     // Here you would typically send the data to your backend or update local state
-    console.log({ title, ingredients: ingredientList, instructions });
+    console.log({ title, ingredients: ingredientList, steps }); // Updated to use "steps"
 
     // Clear the form
     setTitle('');
     setIngredients('');
-    setInstructions('');
+    setSteps(''); // Clear "steps" field
     setError('');
   };
 
@@ -57,10 +57,10 @@ const AddRecipeForm = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Cooking Instructions</label>
+          <label className="block text-sm font-medium text-gray-700">Cooking Steps</label> {/* Updated label */}
           <textarea
-            value={instructions}
-            onChange={(e) => setInstructions(e.target.value)}
+            value={steps}
+            onChange={(e) => setSteps(e.target.value)} // Updated to use "steps"
             className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             rows="4"
             required
