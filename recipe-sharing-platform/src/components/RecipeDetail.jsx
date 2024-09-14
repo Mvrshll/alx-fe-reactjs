@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import recipesData from '../data.json';
+import recipesData from '/recipe-sharing-platform/src/data.json';
 
 const RecipeDetail = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    const fetchedRecipe = recipesData.find(r => r.id === parseInt(id));
+    const fetchedRecipe = recipesData.find(r => r.id === parseInt(id)); // Ensure `id` is parsed correctly
     setRecipe(fetchedRecipe);
   }, [id]);
 
   if (!recipe) {
-    return <div className="text-center">Loading...</div>;
+    return <div className="text-center">Loading...</div>; // Loading state
   }
 
   return (
