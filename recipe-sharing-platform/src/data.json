@@ -3,7 +3,7 @@
       "id": 1,
       "title": "Spaghetti Carbonara",
       "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-      "image": "https://via.placeholder.com/150",
+      "image": "https://example.com/spaghetti-carbonara.jpg",
       "ingredients": [
         "400g spaghetti",
         "150g pancetta or guanciale",
@@ -25,7 +25,7 @@
       "id": 2,
       "title": "Chicken Tikka Masala",
       "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
-      "image": "https://via.placeholder.com/150",
+       "image": "https://example.com/chicken-curry.jpg",
       "ingredients": [
         "500g chicken breast, cubed",
         "200g yogurt",
@@ -46,11 +46,13 @@
         "Season with salt and pepper. Garnish with fresh coriander before serving.",
         "Serve with rice or naan."
       ]
+      
     },
     {
         "id": 3,
         "title": "Vegetable Stir-Fry",
         "summary": "A quick and healthy stir-fry packed with colorful vegetables.",
+        "image": "https://example.com/vegetable-stir-fry.jpg",
         "ingredients": [
           "Bell peppers",
           "Carrots",
