@@ -12,7 +12,7 @@
         "Freshly cracked black pepper",
         "Salt"
       ],
-      "instructions": [
+      "steps": [
         "Cook the spaghetti in a large pot of salted boiling water until al dente.",
         "Meanwhile, heat a pan over medium heat and add the pancetta, cooking until crispy.",
         "In a bowl, whisk together the eggs, pecorino cheese, and a generous amount of black pepper.",
@@ -38,7 +38,7 @@
         "Fresh coriander, for garnish",
         "Salt and pepper to taste"
       ],
-      "instructions": [
+      "steps": [
         "Marinate the chicken in yogurt and tikka masala paste for at least 1 hour.",
         "Heat oil in a pan and sauté onions until golden brown. Add garlic and ginger, cooking until fragrant.",
         "Add the marinated chicken and cook until browned.",
@@ -46,5 +46,24 @@
         "Season with salt and pepper. Garnish with fresh coriander before serving.",
         "Serve with rice or naan."
       ]
-    }
+    },
+    {
+        "id": 3,
+        "title": "Vegetable Stir-Fry",
+        "summary": "A quick and healthy stir-fry packed with colorful vegetables.",
+        "ingredients": [
+          "Bell peppers",
+          "Carrots",
+          "Broccoli",
+          "Soy sauce",
+          "Olive oil"
+        ],
+        "steps": [
+        "Heat olive oil in a pan.",
+        "Add sliced bell peppers and carrots." ,
+        "Stir in broccoli and cook until tender.",
+        "Pour in soy sauce and toss to coat.",
+        "Serve hot."
+        ]
+      }
   ]
