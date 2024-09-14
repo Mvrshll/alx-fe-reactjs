@@ -3,65 +3,75 @@ import { useState } from 'react';
 const AddRecipeForm = () => {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
-  const [steps, setSteps] = useState(''); // Updated to use "steps"
-  const [error, setError] = useState('');
+  const [steps, setSteps] = useState('');
+  const [errors, setErrors] = useState({}); // New state for errors
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Simple validation
-    if (!title || !ingredients || !steps) { // Changed "instructions" to "steps"
-      setError('All fields are required.');
-      return;
-    }
+  const validate = () => {
+    const newErrors = {};
+    if (!title) newErrors.title = 'Recipe title is required.';
+    if (!ingredients) newErrors.ingredients = 'Ingredients are required.';
+    if (!steps) newErrors.steps = 'Cooking steps are required.';
 
     const ingredientList = ingredients.split(',').map(ingredient => ingredient.trim());
     if (ingredientList.length < 2) {
-      setError('Please provide at least two ingredients.');
+      newErrors.ingredients = 'Please provide at least two ingredients.';
+    }
+
+    return newErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors); // Set errors if validation fails
       return;
     }
 
-    // Here you would typically send the data to your backend or update local state
-    console.log({ title, ingredients: ingredientList, steps }); // Updated to use "steps"
+    // Log the recipe data (or send it to your backend)
+    console.log({ title, ingredients: ingredients.split(',').map(ingredient => ingredient.trim()), steps });
 
     // Clear the form
     setTitle('');
     setIngredients('');
-    setSteps(''); // Clear "steps" field
-    setError('');
+    setSteps('');
+    setErrors({});
   };
 
   return (
     <div className="container mx-auto p-6 max-w-lg">
       <h1 className="text-3xl font-bold mb-6 text-center">Add a New Recipe</h1>
-      {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
       <form onSubmit={handleSubmit} className="space-y-4 bg-white shadow-md rounded-lg p-6">
+        {errors.title && <p className="text-red-500">{errors.title}</p>}
         <div>
           <label className="block text-sm font-medium text-gray-700">Recipe Title</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className={`mt-1 block w-full border ${errors.title ? 'border-red-500' : 'border-gray-300'} rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
             required
           />
         </div>
+        {errors.ingredients && <p className="text-red-500">{errors.ingredients}</p>}
         <div>
           <label className="block text-sm font-medium text-gray-700">Ingredients (comma separated)</label>
           <textarea
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className={`mt-1 block w-full border ${errors.ingredients ? 'border-red-500' : 'border-gray-300'} rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
             rows="4"
             required
           />
         </div>
+        {errors.steps && <p className="text-red-500">{errors.steps}</p>}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Cooking Steps</label> {/* Updated label */}
+          <label className="block text-sm font-medium text-gray-700">Cooking Steps</label>
           <textarea
             value={steps}
-            onChange={(e) => setSteps(e.target.value)} // Updated to use "steps"
-            className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            onChange={(e) => setSteps(e.target.value)}
+            className={`mt-1 block w-full border ${errors.steps ? 'border-red-500' : 'border-gray-300'} rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
             rows="4"
             required
           />
