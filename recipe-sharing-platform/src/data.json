@@ -1,71 +1,73 @@
 [
-    {
-      "id": 1,
-      "title": "Spaghetti Carbonara",
-      "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-      "image": "https://example.com/spaghetti-carbonara.jpg",
-      "ingredients": [
-        "400g spaghetti",
-        "150g pancetta or guanciale",
-        "100g pecorino cheese, grated",
-        "3 large eggs",
-        "Freshly cracked black pepper",
-        "Salt"
-      ],
-      "steps": [
-        "Cook the spaghetti in a large pot of salted boiling water until al dente.",
-        "Meanwhile, heat a pan over medium heat and add the pancetta, cooking until crispy.",
-        "In a bowl, whisk together the eggs, pecorino cheese, and a generous amount of black pepper.",
-        "Once the pasta is cooked, reserve some pasta water, then drain the spaghetti.",
-        "Add the hot pasta to the pan with the pancetta, remove from heat, and quickly mix in the egg mixture, adding reserved pasta water as needed to create a creamy sauce.",
-        "Serve immediately, topped with extra cheese and black pepper."
-      ]
-    },
-    {
-      "id": 2,
-      "title": "Chicken Tikka Masala",
-      "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
-       "image": "https://example.com/chicken-curry.jpg",
-      "ingredients": [
-        "500g chicken breast, cubed",
-        "200g yogurt",
-        "2 tbsp tikka masala paste",
-        "1 onion, chopped",
-        "2 garlic cloves, minced",
-        "1 inch ginger, grated",
-        "400g canned tomatoes",
-        "200ml coconut milk",
-        "Fresh coriander, for garnish",
-        "Salt and pepper to taste"
-      ],
-      "steps": [
-        "Marinate the chicken in yogurt and tikka masala paste for at least 1 hour.",
-        "Heat oil in a pan and sauté onions until golden brown. Add garlic and ginger, cooking until fragrant.",
-        "Add the marinated chicken and cook until browned.",
-        "Stir in canned tomatoes and coconut milk, then simmer for 20 minutes.",
-        "Season with salt and pepper. Garnish with fresh coriander before serving.",
-        "Serve with rice or naan."
-      ]
-      
-    },
-    {
-        "id": 3,
-        "title": "Vegetable Stir-Fry",
-        "summary": "A quick and healthy stir-fry packed with colorful vegetables.",
-        "image": "https://example.com/vegetable-stir-fry.jpg",
-        "ingredients": [
-          "Bell peppers",
-          "Carrots",
-          "Broccoli",
-          "Soy sauce",
-          "Olive oil"
-        ],
-        "steps": [
-        "Heat olive oil in a pan.",
-        "Add sliced bell peppers and carrots." ,
-        "Stir in broccoli and cook until tender.",
-        "Pour in soy sauce and toss to coat.",
-        "Serve hot."
-        ]
-      }
-  ]
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "https://example.com/spaghetti-carbonara.jpg",
+    "ingredients": [
+      "400g spaghetti",
+      "150g pancetta or guanciale",
+      "100g pecorino cheese, grated",
+      "3 large eggs",
+      "Freshly cracked black pepper",
+      "Salt"
+    ],
+    "steps": [
+      "Cook the spaghetti in a large pot of salted boiling water until al dente.",
+      "Meanwhile, heat a pan over medium heat and add the pancetta, cooking until crispy.",
+      "In a bowl, whisk together the eggs, pecorino cheese, and a generous amount of black pepper.",
+      "Once the pasta is cooked, reserve some pasta water, then drain the spaghetti.",
+      "Add the hot pasta to the pan with the pancetta, remove from heat, and quickly mix in the egg mixture, adding reserved pasta water as needed to create a creamy sauce.",
+      "Serve immediately, topped with extra cheese and black pepper."
+    ],
+    "instructions": "1. Cook the spaghetti in salted water until al dente. 2. Heat pancetta in a pan until crispy. 3. Whisk eggs and cheese together. 4. Combine pasta with pancetta and egg mixture off heat. 5. Adjust with pasta water for creaminess. 6. Serve with extra cheese and black pepper."
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
+    "image": "https://example.com/chicken-curry.jpg",
+    "ingredients": [
+      "500g chicken breast, cubed",
+      "200g yogurt",
+      "2 tbsp tikka masala paste",
+      "1 onion, chopped",
+      "2 garlic cloves, minced",
+      "1 inch ginger, grated",
+      "400g canned tomatoes",
+      "200ml coconut milk",
+      "Fresh coriander, for garnish",
+      "Salt and pepper to taste"
+    ],
+    "steps": [
+      "Marinate the chicken in yogurt and tikka masala paste for at least 1 hour.",
+      "Heat oil in a pan and sauté onions until golden brown. Add garlic and ginger, cooking until fragrant.",
+      "Add the marinated chicken and cook until browned.",
+      "Stir in canned tomatoes and coconut milk, then simmer for 20 minutes.",
+      "Season with salt and pepper. Garnish with fresh coriander before serving.",
+      "Serve with rice or naan."
+    ],
+    "instructions": "1. Marinate chicken in yogurt and tikka paste. 2. Sauté onions, garlic, and ginger. 3. Cook marinated chicken until browned. 4. Add tomatoes and coconut milk; simmer. 5. Season and garnish before serving."
+  },
+  {
+    "id": 3,
+    "title": "Vegetable Stir-Fry",
+    "summary": "A quick and healthy stir-fry packed with colorful vegetables.",
+    "image": "https://example.com/vegetable-stir-fry.jpg",
+    "ingredients": [
+      "Bell peppers",
+      "Carrots",
+      "Broccoli",
+      "Soy sauce",
+      "Olive oil"
+    ],
+    "steps": [
+      "Heat olive oil in a pan.",
+      "Add sliced bell peppers and carrots.",
+      "Stir in broccoli and cook until tender.",
+      "Pour in soy sauce and toss to coat.",
+      "Serve hot."
+    ],
+    "instructions": "1. Heat olive oil in a pan. 2. Add bell peppers and carrots. 3. Stir in broccoli and cook until tender. 4. Add soy sauce and toss. 5. Serve immediately."
+  }
+]

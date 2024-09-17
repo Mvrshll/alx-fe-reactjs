@@ -33,6 +33,8 @@ const RecipeDetail = () => {
           <li key={index} className="mb-1">{step}</li>
         ))}
       </ol>
+      <h2 className="text-2xl font-semibold mt-6">Instructions</h2>
+      <p className="mb-4">{recipe.instructions}</p> {/* Add instructions section here */}
     </div>
   );
 };
