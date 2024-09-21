@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { searchUsers } from './services/githubService'
 import SearchForm from './components/SearchForm'
+import Search from './components/Search'
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -15,6 +16,7 @@ function App() {
     <div className='App'>
       <h1>GitHub User Search</h1>
       <SearchForm onSearch={handleSearch} />
+      <Search />
       <ul>
         {users.map(user => (
           <li key={user.id}>{user.login}</li>
