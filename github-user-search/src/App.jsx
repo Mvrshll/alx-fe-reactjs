@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className='App'>
-      <h1>GitHub User Search</h1>
+      <h1 className="text-3xl font-bold text-center my-8">GitHub User Search</h1>
       <SearchForm onSearch={handleSearch} />
       <Search />
       <ul>
