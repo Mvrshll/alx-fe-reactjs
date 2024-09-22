@@ -4,22 +4,21 @@ import { fetchUserData } from '../services/githubService';
 function Search() {
   const [username, setUsername] = useState('');
   const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setIsLoading(true);
     setError(null);
     setUserData(null);
-
     try {
       const data = await fetchUserData(username);
       setUserData(data);
     } catch (err) {
-      setError('Looks like we can\'t find the user');
+      setError('Looks like we cant find the user');
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -36,12 +35,13 @@ function Search() {
         <button type="submit">Search</button>
       </form>
 
-      {loading && <p>Loading...</p>}
+      {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {userData && (
         <div>
-          <img src={userData.avatar_url} alt={`${userData.login}'s avatar`} style={{width: '100px'}} />
+          <img src={userData.avatar_url} alt={`${userData.login}'s avatar`} style={{ width: 100 }} />
           <h2>{userData.name || userData.login}</h2>
+          <p>{userData.bio}</p>
           <a href={userData.html_url} target="_blank" rel="noopener noreferrer">View GitHub Profile</a>
         </div>
       )}
