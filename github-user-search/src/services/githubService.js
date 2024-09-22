@@ -1,17 +1,16 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.github.com/search/users';
+const BASE_URL = 'https://api.github.com/search/users?q=';
 
 export const searchUsers = async (params, page = 1) => {
   const { username, location, minRepos } = params;
   let query = username;
-  if (location) query += ` location:${location}`;
-  if (minRepos) query += ` repos:>=${minRepos}`;
+  if (location) query += `+location:${location}`;
+  if (minRepos) query += `+repos:>=${minRepos}`;
 
   try {
-    const response = await axios.get(BASE_URL, {
+    const response = await axios.get(`${BASE_URL}${encodeURIComponent(query)}`, {
       params: {
-        q: query,
         per_page: 30,
         page: page
       },
