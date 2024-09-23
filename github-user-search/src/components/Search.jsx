@@ -3,7 +3,7 @@ import { fetchUserData, searchUsers } from '../services/githubService';
 
 function Search() {
   const [searchMode, setSearchMode] = useState('single');
-  const [singleUsername, setSingleUsername] = useState('');
+  const [username, setUsername] = useState('');
   const [advancedParams, setAdvancedParams] = useState({
     username: '',
     location: '',
@@ -16,7 +16,7 @@ function Search() {
 
   const handleInputChange = (e) => {
     if (searchMode === 'single') {
-      setSingleUsername(e.target.value);
+      setUsername(e.target.value);
     } else {
       const { name, value } = e.target;
       setAdvancedParams(prev => ({ ...prev, [name]: value }));
@@ -32,11 +32,11 @@ function Search() {
 
     try {
       if (searchMode === 'single') {
-        const data = await fetchUserData(singleUsername);
+        const data = await fetchUserData(username);
         if (data) {
           setUserData(data);
         } else {
-          setError("Looks like we cant find the user");
+          setError("Looks like we can't find the user");
         }
       } else {
         const data = await searchUsers(advancedParams, 1);
@@ -46,15 +46,15 @@ function Search() {
           setError("No users found matching the criteria");
         }
       }
-    } catch (err) {
-      setError('Error fetching user data: ${err.message}');
+    } catch (error) {
+      setError(`Error fetching user data: ${error.message}`);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="container mx-auto p-4 text-white">
+    <div className="container mx-auto p-4 text-white bg-gray-900">
       <h1 className="text-3xl font-bold mb-6 text-center">GitHub User Search</h1>
       
       <div className="mb-6 flex justify-center">
@@ -77,7 +77,7 @@ function Search() {
           <div className="flex">
             <input
               type="text"
-              value={singleUsername}
+              value={username}
               onChange={handleInputChange}
               placeholder="Enter GitHub username"
               className="flex-grow p-2 border rounded-l bg-gray-800 text-white"
