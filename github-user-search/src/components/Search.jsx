@@ -15,10 +15,10 @@ function Search() {
   const [error, setError] = useState(null);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
     if (searchMode === 'single') {
-      setSingleUsername(value);
+      setSingleUsername(e.target.value);
     } else {
+      const { name, value } = e.target;
       setAdvancedParams(prev => ({ ...prev, [name]: value }));
     }
   };
@@ -96,7 +96,6 @@ function Search() {
               onChange={handleInputChange}
               placeholder="GitHub username"
               className="p-2 border rounded bg-gray-800 text-white"
-              required
             />
             <input
               type="text"
