@@ -128,15 +128,21 @@ function Search() {
           <h2 className="text-xl font-bold mb-2">{userData.name || userData.login}</h2>
           <p>Followers: {userData.followers}</p>
           <p>Public Repos: {userData.public_repos}</p>
+          <p>
+            Profile URL: <a href={userData.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{userData.html_url}</a>
+          </p>
         </div>
       )}
 
       {searchMode === 'advanced' && users.length > 0 && (
         <ul>
           {users.map(user => (
-            <li key={user.id} className="mb-2">
+            <li key={user.id} className="mb-4">
               <img src={user.avatar_url} alt={user.login} className="w-10 h-10 rounded-full inline-block mr-2" />
-              <span>{user.login}</span>
+              <span className="font-bold">{user.login}</span>
+              <p>
+                Profile URL: <a href={user.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{user.html_url}</a>
+              </p>
             </li>
           ))}
         </ul>
