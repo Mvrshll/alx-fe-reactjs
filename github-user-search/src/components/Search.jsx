@@ -36,7 +36,7 @@ function Search() {
         if (data) {
           setUserData(data);
         } else {
-          setError("Looks like we can't find the user");
+          setError("Looks like we canut find the user");
         }
       } else {
         const data = await searchUsers(advancedParams, 1);
