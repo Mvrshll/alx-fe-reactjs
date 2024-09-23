@@ -33,10 +33,18 @@ function Search() {
     try {
       if (searchMode === 'single') {
         const data = await fetchUserData(singleUsername);
-        setUserData(data);
+        if (data) {
+          setUserData(data);
+        } else {
+          setError("Looks like we can't find the user");
+        }
       } else {
         const data = await searchUsers(advancedParams, 1);
-        setUsers(data.items);
+        if (data.items && data.items.length > 0) {
+          setUsers(data.items);
+        } else {
+          setError("No users found matching the criteria");
+        }
       }
     } catch (err) {
       setError('Error fetching user data');
@@ -116,13 +124,11 @@ function Search() {
       {isLoading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
-      {/* Display results here */}
       {searchMode === 'single' && userData && (
         <div>
-          <h2 className="text-xl font-bold mb-2">{userData.name}</h2>
+          <h2 className="text-xl font-bold mb-2">{userData.name || userData.login}</h2>
           <p>Followers: {userData.followers}</p>
           <p>Public Repos: {userData.public_repos}</p>
-          {/* Add more user details as needed */}
         </div>
       )}
 
