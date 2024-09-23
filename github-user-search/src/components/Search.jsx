@@ -47,7 +47,7 @@ function Search() {
         }
       }
     } catch (err) {
-      setError('Error fetching user data');
+      setError('Error fetching user data: ${err.message}');
     } finally {
       setIsLoading(false);
     }
