@@ -61,12 +61,26 @@ h1 {
   color: #333;
 }
 
-.add-recipe-form {
+nav {
+  margin-bottom: 20px;
+}
+
+nav a {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+.add-recipe-form,
+.edit-recipe-form {
   margin-bottom: 30px;
 }
 
 .add-recipe-form input,
-.add-recipe-form textarea {
+.add-recipe-form textarea,
+.edit-recipe-form input,
+.edit-recipe-form textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -74,7 +88,9 @@ h1 {
   border-radius: 4px;
 }
 
-.add-recipe-form button {
+.add-recipe-form button,
+.edit-recipe-form button,
+.delete-button {
   background-color: #4CAF50;
   color: white;
   padding: 10px 15px;
@@ -83,8 +99,17 @@ h1 {
   cursor: pointer;
 }
 
-.add-recipe-form button:hover {
+.add-recipe-form button:hover,
+.edit-recipe-form button:hover {
   background-color: #45a049;
+}
+
+.delete-button {
+  background-color: #f44336;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
 }
 
 .recipe-list {
@@ -103,4 +128,21 @@ h1 {
 .recipe-item h3 {
   margin-top: 0;
   color: #333;
+}
+
+.recipe-item a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.recipe-item a:hover {
+  text-decoration: underline;
+}
+
+.recipe-details {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+  margin-top: 20px;
 }
