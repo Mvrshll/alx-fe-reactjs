@@ -146,3 +146,15 @@ nav a {
   padding: 20px;
   margin-top: 20px;
 }
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
