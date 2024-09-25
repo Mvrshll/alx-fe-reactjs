@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { fetchUserData } from '../services/githubService';
+import { searchUsers } from '../services/githubService';
 
 const Search = () => {
   const [username, setUsername] = useState('');
@@ -13,13 +13,15 @@ const Search = () => {
     e.preventDefault();
     setLoading(true);
     setError(false);
+
     try {
-      const data = await fetchUserData(username, location, minRepos);
+      const data = await searchUsers(username, location, minRepos);
       setUserData(data.items || []);
       setUsername('');
       setLocation('');
       setMinRepos('');
     } catch (err) {
+      console.error(err);
       setError(true);
       setUserData([]);
     } finally {
@@ -37,7 +39,6 @@ const Search = () => {
           onChange={(e) => setUsername(e.target.value)}
           className="block w-full p-2 mb-4 border border-[#495057] bg-[#212529] text-[#f8f9fa] rounded"
         />
-
         <input
           type="text"
           placeholder="Location (optional)"
@@ -45,7 +46,6 @@ const Search = () => {
           onChange={(e) => setLocation(e.target.value)}
           className="block w-full p-2 mb-4 border border-[#495057] bg-[#212529] text-[#f8f9fa] rounded"
         />
-
         <input
           type="number"
           placeholder="Minimum Repositories (optional)"
@@ -53,7 +53,6 @@ const Search = () => {
           onChange={(e) => setMinRepos(e.target.value)}
           className="block w-full p-2 mb-4 border border-[#495057] bg-[#212529] text-[#f8f9fa] rounded"
         />
-
         <button
           type="submit"
           className="bg-[#6c757d] hover:bg-[#5a6268] text-[#f8f9fa] font-bold py-2 px-4 rounded w-full"
