@@ -1,154 +1,96 @@
 import { useState } from 'react';
-import { fetchUserData, searchUsers } from '../services/githubService';
+import { fetchUserData } from '../services/githubService';
 
-function Search() {
-  const [searchMode, setSearchMode] = useState('single');
+const Search = () => {
   const [username, setUsername] = useState('');
-  const [advancedParams, setAdvancedParams] = useState({
-    username: '',
-    location: '',
-    minRepos: ''
-  });
-  const [userData, setUserData] = useState(null);
-  const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const handleInputChange = (e) => {
-    if (searchMode === 'single') {
-      setUsername(e.target.value);
-    } else {
-      const { name, value } = e.target;
-      setAdvancedParams(prev => ({ ...prev, [name]: value }));
-    }
-  };
+  const [location, setLocation] = useState('');
+  const [minRepos, setMinRepos] = useState('');
+  const [userData, setUserData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    setError(null);
-    setUserData(null);
-    setUsers([]);
-
+    setLoading(true);
+    setError(false);
     try {
-      if (searchMode === 'single') {
-        const data = await fetchUserData(username);
-        if (data) {
-          setUserData(data);
-        } else {
-          setError("Looks like we can't find the user");
-        }
-      } else {
-        const data = await searchUsers(advancedParams, 1);
-        if (data.items && data.items.length > 0) {
-          setUsers(data.items);
-        } else {
-          setError("No users found matching the criteria");
-        }
-      }
-    } catch (error) {
-      setError(`Error fetching user data: ${error.message}`);
+      const data = await fetchUserData(username, location, minRepos);
+      setUserData(data.items || []);
+      setUsername('');
+      setLocation('');
+      setMinRepos('');
+    } catch (err) {
+      setError(true);
+      setUserData([]);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
   return (
-    <div className="container mx-auto p-4 text-white bg-gray-900">
-      <h1 className="text-3xl font-bold mb-6 text-center">GitHub User Search</h1>
-      
-      <div className="mb-6 flex justify-center">
-        <button
-          onClick={() => setSearchMode('single')}
-          className={`px-4 py-2 rounded-l ${searchMode === 'single' ? 'bg-blue-500' : 'bg-gray-700'}`}
-        >
-          Single User Search
-        </button>
-        <button
-          onClick={() => setSearchMode('advanced')}
-          className={`px-4 py-2 rounded-r ${searchMode === 'advanced' ? 'bg-blue-500' : 'bg-gray-700'}`}
-        >
-          Advanced Search
-        </button>
-      </div>
+    <div className="container mx-auto p-6">
+      <form onSubmit={handleSubmit} className="bg-[#343a40] p-6 rounded-lg shadow-xl max-w-lg mx-auto">
+        <input
+          type="text"
+          placeholder="Search GitHub username..."
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="block w-full p-2 mb-4 border border-[#495057] bg-[#212529] text-[#f8f9fa] rounded"
+        />
 
-      <form onSubmit={handleSubmit} className="mb-8">
-        {searchMode === 'single' ? (
-          <div className="flex">
-            <input
-              type="text"
-              value={username}
-              onChange={handleInputChange}
-              placeholder="Enter GitHub username"
-              className="flex-grow p-2 border rounded-l bg-gray-800 text-white"
-              required
-            />
-            <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-r hover:bg-blue-600">
-              Search
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <input
-              type="text"
-              name="username"
-              value={advancedParams.username}
-              onChange={handleInputChange}
-              placeholder="GitHub username"
-              className="p-2 border rounded bg-gray-800 text-white"
-            />
-            <input
-              type="text"
-              name="location"
-              value={advancedParams.location}
-              onChange={handleInputChange}
-              placeholder="Location"
-              className="p-2 border rounded bg-gray-800 text-white"
-            />
-            <input
-              type="number"
-              name="minRepos"
-              value={advancedParams.minRepos}
-              onChange={handleInputChange}
-              placeholder="Minimum repositories"
-              className="p-2 border rounded bg-gray-800 text-white"
-            />
-            <button type="submit" className="col-span-3 mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-              Search
-            </button>
-          </div>
-        )}
+        <input
+          type="text"
+          placeholder="Location (optional)"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          className="block w-full p-2 mb-4 border border-[#495057] bg-[#212529] text-[#f8f9fa] rounded"
+        />
+
+        <input
+          type="number"
+          placeholder="Minimum Repositories (optional)"
+          value={minRepos}
+          onChange={(e) => setMinRepos(e.target.value)}
+          className="block w-full p-2 mb-4 border border-[#495057] bg-[#212529] text-[#f8f9fa] rounded"
+        />
+
+        <button
+          type="submit"
+          className="bg-[#6c757d] hover:bg-[#5a6268] text-[#f8f9fa] font-bold py-2 px-4 rounded w-full"
+        >
+          Search
+        </button>
       </form>
 
-      {isLoading && <p>Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+      {loading && <p className="text-center mt-4 text-[#f8f9fa]">Loading...</p>}
+      {error && <p className="text-center text-red-500 mt-4">Looks like we cant find the user.</p>}
 
-      {searchMode === 'single' && userData && (
-        <div>
-          <h2 className="text-xl font-bold mb-2">{userData.name || userData.login}</h2>
-          <p>Followers: {userData.followers}</p>
-          <p>Public Repos: {userData.public_repos}</p>
-          <p>
-            Profile URL: <a href={userData.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{userData.html_url}</a>
-          </p>
-        </div>
-      )}
-
-      {searchMode === 'advanced' && users.length > 0 && (
-        <ul>
-          {users.map(user => (
-            <li key={user.id} className="mb-4">
-              <img src={user.avatar_url} alt={user.login} className="w-10 h-10 rounded-full inline-block mr-2" />
-              <span className="font-bold">{user.login}</span>
-              <p>
-                Profile URL: <a href={user.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{user.html_url}</a>
-              </p>
-            </li>
+      {userData.length > 0 && (
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {userData.map((user) => (
+            <div key={user.id} className="bg-[#343a40] p-4 rounded-lg shadow-md">
+              <img
+                src={user.avatar_url}
+                alt={user.login}
+                className="w-20 h-20 rounded-full mx-auto"
+              />
+              <h3 className="text-center mt-4 text-lg font-semibold text-[#f8f9fa]">{user.login}</h3>
+              <p className="text-center text-[#6c757d]">{user.location || 'No location specified'}</p>
+              <p className="text-center text-[#6c757d]">Repositories: {user.public_repos || 'No repo'}</p>
+              <a
+                href={user.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-center mt-2 text-gray-100 bg-gray-500 p-4 rounded"
+              >
+                View Profile
+              </a>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
-}
+};
 
 export default Search;
